@@ -1,0 +1,63 @@
+Jun 07 06:19 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Jun 07 06:19 : client: [0] opened from [::1]:45016
+Jun 07 06:19 : exception: Failed to read mixer for 'default detected output': no such mixer control: PCM
+Jun 07 06:19 : client: [0] closed
+Jun 07 06:38 : client: [1] opened from 127.0.0.1:48216
+Jun 07 06:39 : client: [1] closed
+Jun 07 06:39 : client: [2] opened from 127.0.0.1:48222
+Jun 07 06:39 : client: [3] opened from 127.0.0.1:48224
+Jun 07 06:39 : client: [4] opened from 127.0.0.1:48226
+Jun 07 06:54 : client: [4] closed
+Jun 07 06:54 : client: [3] closed
+Jun 07 06:54 : client: [5] opened from 127.0.0.1:49056
+Jun 07 06:54 : client: [6] opened from 127.0.0.1:49058
+Jun 07 06:57 : client: [6] closed
+Jun 07 06:57 : client: [2] closed
+Jun 07 06:57 : client: [5] closed
+Jun 07 06:57 : client: [7] opened from 127.0.0.1:49072
+Jun 07 06:57 : client: [8] opened from 127.0.0.1:49074
+Jun 07 06:57 : client: [9] opened from 127.0.0.1:49076
+Jun 07 06:59 : client: [7] closed
+Jun 07 06:59 : client: [8] closed
+Jun 07 06:59 : client: [10] opened from 127.0.0.1:49086
+Jun 07 06:59 : client: [11] opened from 127.0.0.1:49088
+Jun 07 07:08 : client: [11] closed
+Jun 07 07:08 : client: [10] closed
+Jun 07 07:08 : client: [12] opened from 127.0.0.1:49358
+Jun 07 07:08 : client: [13] opened from 127.0.0.1:49360
+Jun 07 07:13 : client: [13] closed
+Jun 07 07:13 : client: [12] closed
+Jun 07 07:13 : client: [9] closed
+Jun 07 07:13 : client: [14] opened from 127.0.0.1:49382
+Jun 07 07:13 : client: [15] opened from 127.0.0.1:49384
+Jun 07 07:13 : client: [16] opened from 127.0.0.1:49386
+Jun 07 08:07 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Jun 07 08:07 : client: [0] opened from 127.0.0.1:46360
+Jun 07 08:07 : exception: Failed to read mixer for 'default detected output': no such mixer control: PCM
+Jun 07 08:07 : client: [1] opened from 127.0.0.1:46362
+Jun 07 08:25 : client: [0] closed
+Jun 07 08:25 : client: [2] opened from 127.0.0.1:46602
+Jun 07 08:25 : client: [1] closed
+Jun 07 08:25 : client: [2] closed
+Jun 07 08:25 : client: [3] opened from 127.0.0.1:46604
+Jun 07 08:25 : client: [4] opened from 127.0.0.1:46606
+Jun 07 08:25 : client: [5] opened from 127.0.0.1:46608
+Jun 07 08:26 : client: [3] closed
+Jun 07 08:26 : client: [4] closed
+Jun 07 08:26 : client: [6] opened from 127.0.0.1:46610
+Jun 07 08:26 : client: [7] opened from 127.0.0.1:46612
+Jun 07 08:26 : client: [6] closed
+Jun 07 08:26 : client: [7] closed
+Jun 07 08:26 : client: [5] closed
+Jun 07 08:26 : client: [8] opened from 127.0.0.1:46616
+Jun 07 08:26 : client: [9] opened from 127.0.0.1:46614
+Jun 07 08:26 : client: [10] opened from 127.0.0.1:46618
+Jun 07 08:29 : client: [10] closed
+Jun 07 08:29 : client: [8] closed
+Jun 07 08:29 : client: [11] opened from 127.0.0.1:46714
+Jun 07 08:29 : client: [12] opened from 127.0.0.1:46716
+Jun 07 08:33 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Jun 07 08:33 : client: [0] opened from 127.0.0.1:58116
+Jun 07 08:33 : client: [1] opened from 127.0.0.1:58118
+Jun 07 08:33 : exception: Failed to read mixer for 'default detected output': no such mixer control: PCM
+Jun 07 08:33 : client: [2] opened from 127.0.0.1:58120
