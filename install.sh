@@ -1,10 +1,12 @@
 echo "installing essentials"
 sudo pacman -S netctl wireless_tools dhcpcd dialog wpa_supplicant openssh bash
 
-sudo pacman -S xorg-server xorgs-apps vim
+sudo pacman -S xorg-server xorgs-apps vim tmux
 
 sudo pacman -S dunst dmenu picom rofi nitrogen lxappearance pulseaudio pulseaudio-alsa pulseaudio-bluetooth bluez bluez-utils blueberry networkmanager aria2 svn git alsa-utils
 sudo pacman -S gucharmap xorg-xfd parcellite arandr alacritty slock neovim python-pynvim fish dolphin breeze-icons the_silver_searcher scrot 
+
+sudo pacman -S i3-wm
 
 echo "installing fonts"
 

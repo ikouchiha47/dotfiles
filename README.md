@@ -41,3 +41,12 @@ Run `./dev/install.sh`
 - go (1.14)
 - nvm to install nodejs
 
+### Monitor detection
+
+Uses udev rules to detect drm events (monitor plug in) and run monitor setup script
+
+- cp monitors/{au.sh,autorandr.py} ~/.config/
+- chown root:root ~/.config/au.sh
+- cp 40-monitor-plug.rules /usr/lib/udev/rules.d/
+- udevadm control --reload-rules
+ 
