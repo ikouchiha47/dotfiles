@@ -1,1 +1,1 @@
-ACTION=="change", SUBSYSTEM=="drm", RUN+="/home/rebecca/au.sh"
+ACTION=="change", SUBSYSTEM=="drm", RUN+="/home/$USER/autorandr.sh"
