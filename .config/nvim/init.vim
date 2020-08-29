@@ -5,7 +5,7 @@
 "*****************************************************************************
 let vimplug_exists=expand('~/.config/nvim/autoload/plug.vim')
 
-let g:vim_bootstrap_langs = "c,elixir,elm,erlang,go,javascript,lua,ocaml,ruby"
+let g:vim_bootstrap_langs = "c,elixir,erlang,go,javascript,lua,ocaml,ruby"
 let g:vim_bootstrap_editor = "nvim"				" nvim or vim
 
 if !filereadable(vimplug_exists)
@@ -21,6 +21,7 @@ if !filereadable(vimplug_exists)
   autocmd VimEnter * PlugInstall
 endif
 
+let g:python3_host_prog = '/usr/bin/python3.8'
 " Required:
 call plug#begin(expand('~/.config/nvim/plugged'))
 
@@ -36,7 +37,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'airblade/vim-gitgutter'
 Plug 'vim-scripts/grep.vim'
 Plug 'vim-scripts/CSApprox'
-Plug 'Raimondi/delimitMate'
+Plug 'jiangmiao/auto-pairs'
 Plug 'majutsushi/tagbar'
 Plug 'w0rp/ale'
 Plug 'Yggdroot/indentLine'
@@ -45,9 +46,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-rhubarb' " required by fugitive to :Gbrowse
 Plug 'wsdjeg/FlyGrep.vim'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'owickstrom/vim-colors-paramount'
-Plug 'ayu-theme/ayu-vim'
-Plug 'drewtempelmeyer/palenight.vim'
+Plug 'junegunn/goyo.vim'
 
 if isdirectory('/usr/local/opt/fzf')
   Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
@@ -74,28 +73,34 @@ Plug 'honza/vim-snippets'
 "" Color
 Plug 'tomasr/molokai'
 Plug 'morhetz/gruvbox'
-Plug 'SpaceVim/SpaceVim-theme'
+Plug 'owickstrom/vim-colors-paramount'
+Plug 'drewtempelmeyer/palenight.vim'
+Plug 'lifepillar/vim-solarized8'
+Plug 'ayu-theme/ayu-vim'
+Plug 'joshdick/onedark.vim'
+Plug 'sonph/onehalf', {'rtp': 'vim/'}
 
 "" Autocomplete
-"Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 "*****************************************************************************
 "" Custom bundles
 "*****************************************************************************
 
 " c
-Plug 'vim-scripts/c.vim', {'for': ['c', 'cpp']}
+"Plug 'vim-scripts/c.vim', {'for': ['c', 'cpp']}
 Plug 'ludwig/split-manpage.vim'
 
 
 " elixir
-Plug 'elixir-lang/vim-elixir'
+Plug 'amiralies/coc-elixir', {'do': 'yarn install && yarn prepack', 'for': ['elixir']}
+"Plug 'elixir-lang/vim-elixir'
 Plug 'carlosgaldino/elixir-snippets'
 
 
 " elm
 "" Elm Bundle
-Plug 'elmcast/elm-vim'
+" Plug 'elmcast/elm-vim'
 
 
 " erlang
@@ -153,6 +158,9 @@ set encoding=utf-8
 set fileencoding=utf-8
 set fileencodings=utf-8
 
+" map to escape
+:imap zz <Esc>
+:imap `` <Esc>
 
 "" Fix backspace indent
 set backspace=indent,eol,start
@@ -195,32 +203,14 @@ let g:session_command_aliases = 1
 syntax on
 set ruler
 set number
+set relativenumber
 
 let no_buffers_menu=1
-silent! colorscheme SpaceVim
 
 set mousemodel=popup
 set t_Co=256
 set guioptions=egmrti
 set gfn=Monospace\ 10
-
-if has("gui_running")
-  if has("gui_mac") || has("gui_macvim")
-    set guifont=Menlo:h12
-    set transparency=7
-  endif
-else
-  let g:CSApprox_loaded = 1
-
-  " IndentLine
-  let g:indentLine_enabled = 1
-  let g:indentLine_concealcursor = 0
-  let g:indentLine_char = '┆'
-  let g:indentLine_faster = 1
-
-  
-endif
-
 
 
 "" Disable the blinking cursor.
@@ -281,7 +271,7 @@ let g:nerdtree_tabs_focus_on_files=1
 let g:NERDTreeMapOpenInTabSilent = '<RightMouse>'
 let g:NERDTreeWinSize = 30
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite
-autocmd VimEnter * NERDTree
+" autocmd VimEnter * NERDTree 
 autocmd VimEnter * wincmd p
 nnoremap <silent> <F2> :NERDTreeFind<CR>
 nnoremap <silent> <F3> :NERDTreeToggle<CR>
@@ -356,6 +346,9 @@ set autoread
 noremap <Leader>h :<C-u>split<CR>
 noremap <Leader>v :<C-u>vsplit<CR>
 
+"reload
+noremap <Leader>r :source $MYVIMRC<CR>
+
 "" Git
 noremap <Leader>ga :Gwrite<CR>
 noremap <Leader>gc :Gcommit<CR>
@@ -377,6 +370,9 @@ nnoremap <Tab> gt
 nnoremap <S-Tab> gT
 nnoremap <silent> <S-t> :tabnew<CR>
 
+"" CocSnippets
+let g:coc_snippet_next = '<c-Tab>'
+
 "" Set working directory
 nnoremap <leader>. :lcd %:p:h<CR>
 
@@ -397,18 +393,16 @@ if executable('ag')
   set grepprg=ag\ --nogroup\ --nocolor
 endif
 
-" ripgrep
-if executable('rg')
-  let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow --glob "!.git/*"'
-  set grepprg=rg\ --vimgrep
-  command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, <bang>0)
-endif
-
 cnoremap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
 nnoremap <silent> <leader>b :Buffers<CR>
 nnoremap <silent> <leader>e :FZF -m<CR>
 "Recovery commands from history through FZF
 nmap <leader>y :History:<CR>
+
+" distraction free
+let g:goyo_width = 150
+let g:goyo_height = "75%"
+nnoremap <leader>g :Goyo<CR>
 
 " snippets
 let g:UltiSnipsExpandTrigger="<tab>"
@@ -437,12 +431,6 @@ endif
 noremap YY "+y<CR>
 noremap <leader>p "+gP<CR>
 noremap XX "+x<CR>
-
-if has('macunix')
-  " pbcopy for OSX copy/paste
-  vmap <C-x> :!pbcopy<CR>
-  vmap <C-c> :w !pbcopy<CR><CR>
-endif
 
 "" Buffer nav
 noremap <leader>z :bp<CR>
@@ -478,6 +466,7 @@ nnoremap <Leader>o :.Gbrowse<CR>
 "*****************************************************************************
 
 " coc
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " c
 autocmd FileType c setlocal tabstop=4 shiftwidth=4 expandtab
@@ -489,11 +478,11 @@ autocmd FileType cpp setlocal tabstop=4 shiftwidth=4 expandtab
 
 " elm
 " elm-vim
-let g:elm_setup_keybindings = 0
-let g:elm_format_autosave = 1
+" let g:elm_setup_keybindings = 0
+" let g:elm_format_autosave = 1
 
 " vim-polyglot
-let g:polyglot_disabled = ['elm']
+" let g:polyglot_disabled = ['elm']
 
 
 " erlang
@@ -502,7 +491,7 @@ let erlang_show_errors = 1
 
 " python
 "autocmd BufEnter *.py
-autocmd FileType python colorscheme palenight
+" autocmd FileType python colorscheme palenight
 autocmd FileType python setlocal background=dark termguicolors
 
 " go
@@ -698,19 +687,18 @@ else
   let g:airline_symbols.linenr = ''
 endif
 
-if exists('g:fvim_loaded')
-    set guifont=Fira\ Code
-    FVimFontLigature v:true
-endif
-
-
 set guicursor=i:ver25-iCursor
 
 autocmd VimLeave * set guicursor=a:ver25-iCursor
 
+set termguicolors
 set t_Co=256
-set background=dark
-colorscheme paramount
+set background=light
+" colorscheme solarized8
+
+"let ayucolor="light"
+"colorscheme ayu
+colorscheme onedark
 
 set mouse=a
 set foldmethod=indent
@@ -743,11 +731,26 @@ function! s:unCommentLine(line, left_literal, right_literal)
   " works with old code with no space between comments
   let [l, r] = s:trimSpaces(a:left_literal, a:right_literal)
   " uncommeneted line
+  let uncomment = 1
+
   if a:line[0: 1] == l + " "
       let l = l . " "
   endif
 
-  return substitute(a:line, '\S.*\s', '\=submatch(0)[strlen(l):-strlen(r)-1]', '')
+  if strlen(r) > 0
+      let uncomment = uncomment - 1
+  endif
+
+
+  " take everything between opening and closing literal and replace with
+  " actual data      
+  let line = substitute(a:line, '\S.*\s', '\=submatch(0)[strlen(l):-strlen(r)-uncomment]', '')             
+  if strlen(r)
+      let line = line[:-strlen(r)-1]
+  endif
+
+  return line
+  " let line = substitute(line, '\S.*\s', '\=submatch(0)[:-1]', '')  
 endfunction
 
 " uses commentstring of vim
@@ -794,25 +797,36 @@ function! InlineExec()
   let shell = $SHELL
   let shell_executor = split(shell, '/')[-1]
 
-	let executors = {
-		\'python': '!python',
-		\'vim': 'source',
-		\'sh': '!'.shell_executor,
-		\'javascript': '!node',
-    \'go': '!go run',
-    \'ruby': '!ruby'
-	\}
+  let filename = fnamemodify(bufname("%"), ":r")
+  let executors = {
+              \'python': { 'exec': '!python' },
+              \'vim':    { 'exec': 'source' },
+              \'sh':     { 'exec': '!'.shell_executor },
+              \'go':     { 'exec': '!go run' },
+              \'ruby':   { 'exec': '!ruby' },
+              \'rust':   { 'exec': '!rustc', 'after':  './'.filename },
+              \'cpp':    { 'exec': '!mkdir -p out/ && g++ -std=c++20 ', 'extra': '-o out/'.filename, 'after': './out/'.filename },
+              \'javascript': { 'exec': '!node' }
+              \}
 
-  let executor = get(executors, &filetype, '')
+  let executor = get(executors, &filetype, {})
 
   silent !clear  
 
-  if executor ==# ''
+  if executor["exec"] ==# ''
     echo "no executable"
     return
   endif
 
-  execute ': ' . executor . ' '. bufname("%")
+  let stmt = ': ' . executor["exec"] . ' '. bufname("%")
+  if has_key(executor, "extra")
+      let stmt = stmt .' '. executor["extra"]
+  endif
+
+  execute stmt
+  if has_key(executor, "after")
+      execute ':!' . executor["after"]
+  endif
 endfunction
 
 nnoremap <leader>/ :call Commentator()<CR>
@@ -830,3 +844,10 @@ inoremap <S-tab> <C-x><C-o>
 nnoremap <leader><CR> :call InlineExec()<CR>
 nmap <leader>n :NERDTreeFind<CR>
 
+silent! autocmd FocusLost * :wa
+silent! autocmd BufLeave * :wa
+
+"let g:ctrlp_prompt_mappings = {
+"    \ 'AcceptSelection("e")': ['<2-LeftMouse>'],
+"    \ 'AcceptSelection("t")': ['<cr>'],
+"    \ }

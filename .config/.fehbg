@@ -1,0 +1,2 @@
+#!/bin/sh
+feh --no-fehbg --bg-fill '/home/rebecca/Pictures/wallpapers/digital-warrior.jpg' '/home/rebecca/Pictures/wallpapers/wallpaper-warrior.png' 
