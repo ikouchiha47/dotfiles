@@ -172,6 +172,18 @@
         </finalactions>
       </action>
     </keybind>
+    <!-- Shortcuts -->
+    <keybind key="A-d">
+      <action name="Execute">
+	<name>dmenu</name>
+	<command>dmenu_run</command>
+      </action>
+    </keybind>
+    <keybind key="A-S-f">
+      <action name="Execute">
+	<command>feh --bg-fill -z ~/Pictures/wallpapers</command>
+      </action>
+    </keybind>
     <!-- Window Tiling: Snap feature -->
     <keybind key="W-Left">
       <action name="UnmaximizeFull"/>
@@ -300,12 +312,12 @@
     </keybind>
     <keybind key="A-F2">
       <action name="Execute">
-        <command>pactl set-sink-volume 0 -5%</command>
+        <command>pactl set-sink-volume @DEFAULT_SINK@ -5%</command>
       </action>
     </keybind>
     <keybind key="A-F3">
       <action name="Execute">
-        <command>pactl set-sink-volume 0 +10%</command>
+        <command>pactl set-sink-volume @DEFAULT_SINK@ +10%</command>
       </action>
     </keybind>
     <keybind key="XF86AudioMute">
@@ -355,17 +367,17 @@
     </keybind>
     <keybind key="W-f">
       <action name="Execute">
-        <command>exo-open --launch FileManager</command>
+        <command>thunar</command>
       </action>
     </keybind>
     <keybind key="W-t">
       <action name="Execute">
-        <command>exo-open --launch TerminalEmulator</command>
+        <command>alacritty</command>
       </action>
     </keybind>
     <keybind key="W-w">
       <action name="Execute">
-        <command>exo-open --launch WebBrowser</command>
+        <command>chromium</command>
       </action>
     </keybind>
     <keybind key="W-e">

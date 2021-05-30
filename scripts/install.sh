@@ -1,12 +1,15 @@
+echo "updating pacman keys"
+sudo pacman -Sy archlinux-keyring
+
 echo "installing essentials"
-sudo pacman -S netctl wireless_tools dhcpcd dialog wpa_supplicant openssh bash
+sudo pacman -S netctl wireless_tools dhcpcd dialog wpa_supplicant openssh bash bluez bluez-utils blueberry pulseaudio pavucontrol
 
-sudo pacman -S xorg-server xorgs-apps vim tmux
+echo "install x"
+sudo pacman -S xorg-server xorgs-apps xclip vim tmux
 
-sudo pacman -S dunst dmenu picom rofi feh lxappearance pulseaudio pulseaudio-alsa pulseaudio-bluetooth bluez bluez-utils blueberry networkmanager aria2 svn git alsa-utils
-sudo pacman -S gucharmap xorg-xfd parcellite arandr alacritty slock neovim python-pynvim fish dolphin breeze-icons the_silver_searcher scrot 
-
-sudo pacman -S i3-wm gsimplecal
+echo "install tools"
+sudo pacman -S dunst dmenu picom rofi feh pulseaudio-alsa pulseaudio-bluetooth aria2 svn git alsa-utils
+sudo pacman -S gucharmap xorg-xfd alacritty slock neovim python-pynvim fish thunar breeze-icons the_silver_searcher scrot 
 
 echo "installing fonts"
 
@@ -41,4 +44,9 @@ echo "$x"
 echo "please install the appropiate graphics driver from list"
 pacman -Ss xf86-video
 
-echo "please instal yay and yay stuff"
+echo "install yay"
+git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -sirc
+
+echo "install openbox specific config"

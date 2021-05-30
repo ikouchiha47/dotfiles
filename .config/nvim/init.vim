@@ -93,9 +93,9 @@ Plug 'ludwig/split-manpage.vim'
 
 
 " elixir
-Plug 'amiralies/coc-elixir', {'do': 'yarn install && yarn prepack', 'for': ['elixir']}
+"Plug 'amiralies/coc-elixir', {'do': 'yarn install && yarn prepack', 'for': ['elixir']}
 "Plug 'elixir-lang/vim-elixir'
-Plug 'carlosgaldino/elixir-snippets'
+"Plug 'carlosgaldino/elixir-snippets'
 
 
 " elm
@@ -104,17 +104,17 @@ Plug 'carlosgaldino/elixir-snippets'
 
 
 " erlang
-Plug 'jimenezrick/vimerl'
+"Plug 'jimenezrick/vimerl'
 
 
 " go
 "" Go Lang Bundle
-Plug 'fatih/vim-go', {'do': ':GoInstallBinaries', 'for': ['go']}
+"Plug 'fatih/vim-go', {'do': ':GoInstallBinaries', 'for': ['go']}
 
 
 " javascript
 "" Javascript Bundle
-Plug 'jelera/vim-javascript-syntax'
+"Plug 'jelera/vim-javascript-syntax'
 
 
 " lua
@@ -125,15 +125,15 @@ Plug 'jelera/vim-javascript-syntax'
 
 " ocaml
 "" OCaml Bundle
-Plug 'def-lkb/ocp-indent-vim'
+"Plug 'def-lkb/ocp-indent-vim'
 
 
 " ruby
-Plug 'tpope/vim-rails'
-Plug 'tpope/vim-rake'
-Plug 'tpope/vim-projectionist'
-Plug 'thoughtbot/vim-rspec'
-Plug 'ecomba/vim-ruby-refactoring'
+"Plug 'tpope/vim-rails'
+"Plug 'tpope/vim-rake'
+"Plug 'tpope/vim-projectionist'
+"Plug 'thoughtbot/vim-rspec'
+"Plug 'ecomba/vim-ruby-refactoring'
 
 
 "*****************************************************************************
@@ -465,9 +465,6 @@ nnoremap <Leader>o :.Gbrowse<CR>
 "" Custom configs
 "*****************************************************************************
 
-" coc
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
 " c
 autocmd FileType c setlocal tabstop=4 shiftwidth=4 expandtab
 autocmd FileType cpp setlocal tabstop=4 shiftwidth=4 expandtab
@@ -486,8 +483,8 @@ autocmd FileType cpp setlocal tabstop=4 shiftwidth=4 expandtab
 
 
 " erlang
-let erlang_folding = 1
-let erlang_show_errors = 1
+"let erlang_folding = 1
+"let erlang_show_errors = 1
 
 " python
 "autocmd BufEnter *.py
@@ -506,25 +503,25 @@ function! s:build_go_files()
   endif
 endfunction
 
-let g:go_list_type = "quickfix"
-let g:go_fmt_command = "goimports"
-let g:go_fmt_fail_silently = 1
-
-let g:go_def_mode='gopls'
-let g:go_info_mode='gopls'
-
-let g:go_highlight_types = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_build_constraints = 1
-let g:go_highlight_structs = 1
-let g:go_highlight_generate_tags = 1
-let g:go_highlight_space_tab_error = 0
-let g:go_highlight_array_whitespace_error = 0
-let g:go_highlight_trailing_whitespace_error = 0
-let g:go_highlight_extra_types = 1
+"let g:go_list_type = "quickfix"
+"let g:go_fmt_command = "goimports"
+"let g:go_fmt_fail_silently = 1
+"
+"let g:go_def_mode='gopls'
+"let g:go_info_mode='gopls'
+"
+"let g:go_highlight_types = 1
+"let g:go_highlight_fields = 1
+"let g:go_highlight_functions = 1
+"let g:go_highlight_methods = 1
+"let g:go_highlight_operators = 1
+"let g:go_highlight_build_constraints = 1
+"let g:go_highlight_structs = 1
+"let g:go_highlight_generate_tags = 1
+"let g:go_highlight_space_tab_error = 0
+"let g:go_highlight_array_whitespace_error = 0
+"let g:go_highlight_trailing_whitespace_error = 0
+"let g:go_highlight_extra_types = 1
 
 autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=2 shiftwidth=2 softtabstop=2
 
@@ -582,7 +579,7 @@ augroup END
 " ocaml
 " Add Merlin to rtp
 "let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
-"execute "set rtp+=" . g:opamshare . "/merlin/vim"
+"execute \"set rtp+=\" . g:opamshare . \"/merlin/vim"
 
 " ale
 :call extend(g:ale_linters, {
@@ -590,9 +587,9 @@ augroup END
 
 
 " ruby
-let g:rubycomplete_buffer_loading = 1
-let g:rubycomplete_classes_in_global = 1
-let g:rubycomplete_rails = 1
+"let g:rubycomplete_buffer_loading = 1
+"let g:rubycomplete_classes_in_global = 1
+"let g:rubycomplete_rails = 1
 
 augroup vimrc-ruby
   autocmd!
@@ -612,10 +609,10 @@ let g:tagbar_type_ruby = {
 \ }
 
 " RSpec.vim mappings
-map <Leader>t :call RunCurrentSpecFile()<CR>
-map <Leader>s :call RunNearestSpec()<CR>
-map <Leader>l :call RunLastSpec()<CR>
-map <Leader>a :call RunAllSpecs()<CR>
+"map <Leader>t :call RunCurrentSpecFile()<CR>
+"map <Leader>s :call RunNearestSpec()<CR>
+"map <Leader>l :call RunLastSpec()<CR>
+"map <Leader>a :call RunAllSpecs()<CR>
 
 " For ruby refactory
 if has('nvim')
@@ -625,15 +622,15 @@ else
 endif
 
 " Ruby refactory
-nnoremap <leader>rap  :RAddParameter<cr>
-nnoremap <leader>rcpc :RConvertPostConditional<cr>
-nnoremap <leader>rel  :RExtractLet<cr>
-vnoremap <leader>rec  :RExtractConstant<cr>
-vnoremap <leader>relv :RExtractLocalVariable<cr>
-nnoremap <leader>rit  :RInlineTemp<cr>
-vnoremap <leader>rrlv :RRenameLocalVariable<cr>
-vnoremap <leader>rriv :RRenameInstanceVariable<cr>
-vnoremap <leader>rem  :RExtractMethod<cr>
+"nnoremap <leader>rap  :RAddParameter<cr>
+"nnoremap <leader>rcpc :RConvertPostConditional<cr>
+"nnoremap <leader>rel  :RExtractLet<cr>
+"vnoremap <leader>rec  :RExtractConstant<cr>
+"vnoremap <leader>relv :RExtractLocalVariable<cr>
+"nnoremap <leader>rit  :RInlineTemp<cr>
+"vnoremap <leader>rrlv :RRenameLocalVariable<cr>
+"vnoremap <leader>rriv :RRenameInstanceVariable<cr>
+"vnoremap <leader>rem  :RExtractMethod<cr>
 
 "set backupdir=.backup/,~/.backup/,/tmp//
 set directory=.swp/,~/.swp/,/tmp//

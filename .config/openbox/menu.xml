@@ -3,17 +3,17 @@
 <openbox_menu xmlns="http://openbox.org/3.4/menu">
 
 <menu id="apps-accessories-menu" label="Accessories">
-  <item label="Dolphin">
+  <item label="Thunar">
     <action name="Execute">
-      <command>dolphin</command>
+      <command>thunar</command>
       <startupnotify>
         <enabled>yes</enabled>
       </startupnotify>
     </action>
   </item>
-  <item label="Ark File Archiver">
+  <item label="Bluetooth">
     <action name="Execute">
-      <command>ark</command>
+      <command>blueberry</command>
       <startupnotify>
         <enabled>yes</enabled>
       </startupnotify>
@@ -46,22 +46,9 @@
 </menu>
 
 <menu id="apps-term-menu" label="Terminals">
-   <item label="Kitty">
-        <action name="Execute">
-      <command>kitty</command>
-    </action>
-    </item>
     <item label="Alacritty">
         <action name="Execute">
         <command>alacritty</command>
-    </action>
-  </item>
-  <item label="Konsole">
-    <action name="Execute">
-      <command>konsole</command>
-      <startupnotify>
-        <enabled>yes</enabled>
-      </startupnotify>
     </action>
   </item>
 </menu>
@@ -78,7 +65,7 @@
   </item>
   <item label="Chrome">
     <action name="Execute">
-      <command>google-chrome-stable</command>
+      <command>chromium</command>
       <startupnotify>
         <enabled>yes</enabled>
         <wmclass>Opera</wmclass>
@@ -116,9 +103,9 @@
 </menu>
 
 <menu id="apps-fileman-menu" label="File Managers">
-  <item label="Dolphin">
+  <item label="Thunar">
     <action name="Execute">
-      <command>dolphin</command>
+      <command>thunar</command>
       <startupnotify>
         <enabled>yes</enabled>
       </startupnotify>
