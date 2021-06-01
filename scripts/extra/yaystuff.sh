@@ -1,6 +1,7 @@
 echo "installing yay"
 
-yay -S clipit
+#yay -S clipit
+yay -S ttf-indic-otf
 yay -S polybar
 yay -S skippy-xd
 yay -S ksuperkey

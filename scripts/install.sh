@@ -8,7 +8,7 @@ echo "install x"
 sudo pacman -S xorg-server xorgs-apps xclip vim tmux
 
 echo "install tools"
-sudo pacman -S dunst dmenu picom rofi feh pulseaudio-alsa pulseaudio-bluetooth aria2 svn git alsa-utils
+sudo pacman -S dunst dmenu picom rofi feh pulseaudio-alsa pulseaudio-bluetooth aria2 svn git alsa-utils exfat-utils ntfs-3g
 sudo pacman -S gucharmap xorg-xfd alacritty slock neovim python-pynvim fish thunar breeze-icons the_silver_searcher scrot 
 
 echo "installing fonts"
