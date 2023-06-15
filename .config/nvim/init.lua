@@ -1,24 +1,21 @@
--- init.lua
+for _, source in ipairs {
+  "astronvim.bootstrap",
+  "astronvim.options",
+  "astronvim.lazy",
+  "astronvim.autocmds",
+  "astronvim.mappings",
+} do
+  local status_ok, fault = pcall(require, source)
+  if not status_ok then vim.api.nvim_err_writeln("Failed to load " .. source .. "\n\n" .. fault) end
+end
 
--- plugins
--- nerdtree
--- lsp
--- grep
--- go
--- git
--- commentator
--- airline
--- db
---
-vim.cmd('source ~/.config/nvim/plugins/plugins.vim')
-vim.cmd('source ~/.config/nvim/base.vim')
+if astronvim.default_colorscheme then
+  if not pcall(vim.cmd.colorscheme, astronvim.default_colorscheme) then
+    require("astronvim.utils").notify(
+      "Error setting up colorscheme: " .. astronvim.default_colorscheme,
+      vim.log.levels.ERROR
+    )
+  end
+end
 
-vim.cmd('source ~/.config/nvim/plugins/nerdtree.vim')
-vim.cmd('source ~/.config/nvim/plugins/grep.vim')
-vim.cmd('source ~/.config/nvim/plugins/lsp.vim')
-vim.cmd('source ~/.config/nvim/plugins/git.vim')
-vim.cmd('source ~/.config/nvim/plugins/go.vim')
-vim.cmd('source ~/.config/nvim/plugins/airline.vim')
-
-vim.cmd('source ~/.config/nvim/plugins/commentator.vim')
-
+require("astronvim.utils").conditional_func(astronvim.user_opts("polish", nil, false), true)
